@@ -30,7 +30,7 @@ module.exports = {
   ],
 
   output: {
-    path: path.join(context, "build/"),
+    path: path.join(context, "dist/"),
     filename: "bundle.js",
     publicPath: "/"
   },

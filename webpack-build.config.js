@@ -5,7 +5,7 @@ const webpack = require("webpack");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const Dotenv = require("dotenv-webpack");
 const UglifyJSPlugin = require("uglifyjs-webpack-plugin");
-const CleanWebpackPlugin = require("clean-webpack-plugin");
+const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const BundleAnalyzerPlugin = require("webpack-bundle-analyzer")
   .BundleAnalyzerPlugin;
@@ -28,7 +28,7 @@ module.exports = {
 
   context,
 
-  entry: ["@babel/polyfill", path.join(context, "src/index.jsx")],
+  entry: ["@babel/polyfill", path.join(context, "src/index.tsx")],
 
   devtool: "source-map",
 
@@ -54,7 +54,6 @@ module.exports = {
             keep_fargs: false,
             pure_getters: true,
             collapse_vars: true,
-            warnings: false,
             sequences: true,
             dead_code: true,
             drop_debugger: true,
@@ -80,7 +79,7 @@ module.exports = {
       analyzerMode: "disabled",
       generateStatsFile: true
     }),
-    new CleanWebpackPlugin(["dist/*.*"]),
+    new CleanWebpackPlugin(),
     new HtmlWebpackPlugin({
       title: TITLE,
       template: "index.prod.ejs",
@@ -97,16 +96,9 @@ module.exports = {
     new MiniCssExtractPlugin({
       filename: "[name].[chunkhash].css"
     }),
-    new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/),
-    new CompressionPlugin({
-      asset: "[path].gz[query]",
-      algorithm: "gzip",
-      test: /\.js$|\.css$|\.html$/,
-      threshold: 10240,
-      minRatio: 0
-    }),
+    new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/)
     //https://github.com/jantimon/favicons-webpack-plugin
-    new FaviconsWebpackPlugin({
+    /*new FaviconsWebpackPlugin({
       // Your source logo
       logo: "assets/favicons/favicon.png",
       // Generate a cache file with control hashes and
@@ -124,7 +116,7 @@ module.exports = {
         theme_color: "#fff"
         // usw
       }
-    })
+    })*/
   ],
 
   resolve: {
@@ -213,7 +205,7 @@ module.exports = {
           MiniCssExtractPlugin.loader,
           {
             loader: "css-loader",
-            options: { import: false, sourceMap: true, minimize: true }
+            options: { import: false, sourceMap: true }
           },
           { loader: "postcss-loader", options: { sourceMap: true } },
           "resolve-url-loader",

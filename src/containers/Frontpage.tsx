@@ -1,10 +1,7 @@
 import * as React from "react";
-import styled from "styled-components";
 
-const H1 = styled.h1`
-  color: #fff;
-`;
+import Header1 from "../components/Header1";
 
 export default React.memo(() => {
-  return <H1>Frontpage</H1>;
+  return <Header1>Frontpage</Header1>;
 });
