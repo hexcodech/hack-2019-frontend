@@ -5,4 +5,4 @@ import { connectRouter } from "connected-react-router";
  * @param history The history object
  * @returns The reducer
  */
-export const createRouterReducer = history => connectRouter(history);
+export const createRouterReducer = (history: any) => connectRouter(history);
