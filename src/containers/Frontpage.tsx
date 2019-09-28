@@ -21,14 +21,15 @@ const Container = styled.div`
 `;
 
 const Category = styled.div<{ active: boolean }>`
-  position: relative;
   color: #ffff;
   background-color: ${({ active }) => (active ? "#f00" : "#1f5373")};
   text-align: center;
   border-radius: 20px;
   cursor: pointer;
   height: 100%;
+  display: flex;
   justify-content: center;
+  align-items: center;
 `;
 
 const NewFlex = styled(Flex)`
@@ -71,7 +72,7 @@ export default React.memo(() => {
                 >
                   <Icon
                     size={120}
-                    style={{position: "absolute"}}  
+                    style={{maxHeight: "80%"}}
                   />
                 </Category>
               </Box>
