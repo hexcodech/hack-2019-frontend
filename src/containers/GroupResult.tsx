@@ -3,6 +3,7 @@ import styled from "styled-components";
 import ApolloClient from "apollo-boost";
 import { gql } from "apollo-boost";
 import { getBackURI } from "../utilities/helpers";
+import ReactHeader from "../components/ReactHeader";
 
 const Input = styled.input`
   display: block;
@@ -63,6 +64,7 @@ class CreateGroup extends React.Component<IProps,IState>{
   render(){
     return(
       <div style={{marginTop: "2rem"}}>
+        <ReactHeader />
         {this.state.data.map((data, index) => <p key={index}>{data.test1} : {data.test2}</p>)}
         </div>
     )
