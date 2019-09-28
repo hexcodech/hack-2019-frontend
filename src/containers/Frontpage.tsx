@@ -89,7 +89,7 @@ export default React.memo(() => {
             You selected the category with id {categoryId}
           </div>
         )}
-        <Form selected={categoryId}/>
+        <Form selectedCategories={[categoryId]} />
       </FrontpageContainer>
     </FrontpageContainer>
   );
