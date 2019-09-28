@@ -1,8 +1,12 @@
 import * as React from "react";
 import styled from "styled-components";
 import ApolloClient from "apollo-boost";
+import {connect} from "react-redux";
 import { gql } from "apollo-boost";
 import { getBackURI } from "../utilities/helpers";
+import { push } from "connected-react-router";
+import { AnyAction } from "redux";
+import { ThunkDispatch } from "redux-thunk";
 
 const Input = styled.input`
   display: block;
@@ -41,6 +45,7 @@ interface IState{
 }
 interface IProps{
   selected:string;
+  dispatch: ThunkDispatch<void, void, AnyAction>;
 }
 class Form extends React.Component<IProps,IState>{
   constructor(props:any){
@@ -63,6 +68,8 @@ class Form extends React.Component<IProps,IState>{
     // travel time in seconds
     let travelMinutes = +this.state.travelTime * 60;
     let arrivalDate = new Date(this.state.curDate + " " + this.state.arrivalTime)
+
+    this.props.dispatch(push("/groupInfo"));
   
     event.preventDefault();
   }
@@ -117,4 +124,4 @@ class Form extends React.Component<IProps,IState>{
   }
 }
 
-export default Form;
+export default connect()(Form);
