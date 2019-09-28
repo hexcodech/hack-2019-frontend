@@ -7,6 +7,7 @@ import { getBackURI } from "../utilities/helpers";
 import { push } from "connected-react-router";
 import { AnyAction } from "redux";
 import { ThunkDispatch } from "redux-thunk";
+import { FaSubway, FaCar } from 'react-icons/fa';
 
 const Input = styled.input `
   display: block;
@@ -146,6 +147,14 @@ class Form extends React.Component<IProps, IState> {
             style={{marginLeft: "1rem"}}
             onClick={this.handleSubmit}
           >View Single</Button>
+          <div>
+            <div>
+              <FaSubway />
+            </div>
+            <div>
+              <FaCar />
+            </div>
+          </div>
       </div>
     )
   }
