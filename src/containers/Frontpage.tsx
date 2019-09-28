@@ -13,8 +13,13 @@ const Category = styled.div<{ active: boolean }>`
   position: relative;
   padding-top: 100%;
   color: #ffff;
-  background-color: ${({ active }) => (active ? "#f00" : "#1f5373")};
+  background-color: ${({ active }) => (active ? "#218c74" : "#33d9b2")};
   border-radius: 20px;
+
+  &:hover{
+    cursor: pointer;
+    background-color: #2AB093;
+  }
 `;
 
 const CategoryWrapper = styled.div`
@@ -86,7 +91,7 @@ export default React.memo(() => {
         </NewFlex>
         {categoryId && (
           <div style={{ display: "block" }}>
-            You selected the category with id {categoryId}
+            {categoryId}
           </div>
         )}
         <Form selected={categoryId}/>
