@@ -14,23 +14,26 @@ const COLORS: { [key: number]: String } = {
   5: "#0F6CA6"
 };
 
+const Container = styled.div`
+  height: 100%;
+  display: flex;
+  align-items: center;
+`;
+
 const Category = styled.div<{ active: boolean }>`
   position: relative;
   color: #ffff;
   background-color: ${({ active }) => (active ? "#f00" : "#1f5373")};
   text-align: center;
-  border-radius: 70px;
-  padding-top: 100%;
+  border-radius: 20px;
   cursor: pointer;
+  height: 100%;
+  justify-content: center;
+`;
 
-  & > div {
-    position: absolute;
-    top: 50%;
-    left: 0;
-    right: 0;
-
-    transform: translateY(-50%);
-  }
+const NewFlex = styled(Flex)`
+  flex-grow: 1;
+  height: 40%;
 `;
 
 const CATEGORY_ID_TO_ICON: { [key: number]: IconType } = {
@@ -50,10 +53,9 @@ export default React.memo(() => {
   const [categoryId, setCategoryId] = React.useState(null);
 
   return (
-    <div>
+    <Container>
       <header></header>
-      <main>
-        <Flex flexWrap="wrap">
+        <NewFlex flexWrap="wrap">
           {categories.map(category => {
             const Icon = CATEGORY_ID_TO_ICON[category.id] || FaBeer;
 
@@ -62,19 +64,25 @@ export default React.memo(() => {
                 width={[1, 1 / 2, 1 / 3, 1 / 4]}
                 pr={2}
                 key={category.id}
-                onClick={() => setCategoryId(category.id)}
               >
-                <Category active={categoryId === category.id}>
-                  <Icon size={120} />
+                <Category
+                  active={categoryId === category.id}
+                  onClick={() => setCategoryId(category.id)}
+                >
+                  <Icon
+                    size={120}
+                    style={{position: "absolute"}}  
+                  />
                 </Category>
               </Box>
             );
           })}
-        </Flex>
+        </NewFlex>
         {categoryId && (
-          <div>You selected the category with id {categoryId}</div>
+          <div
+            style={{display: "block"}}
+          >You selected the category with id {categoryId}</div>
         )}
-      </main>
-    </div>
+    </Container>
   );
 });
