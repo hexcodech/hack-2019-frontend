@@ -4,6 +4,7 @@ import styled from "styled-components";
 import { Flex, Box } from "reflexbox";
 import { IconType } from "react-icons/lib/cjs";
 import Form from "../components/Form";
+import ReactHeader from "../components/ReactHeader";
 
 const FrontpageContainer = styled.div`
   height: 100%;
@@ -13,8 +14,13 @@ const Category = styled.div<{ active: boolean }>`
   position: relative;
   padding-top: 100%;
   color: #ffff;
-  background-color: ${({ active }) => (active ? "#f00" : "#1f5373")};
+  background-color: ${({ active }) => (active ? "#218c74" : "#33d9b2")};
   border-radius: 20px;
+
+  &:hover{
+    cursor: pointer;
+    background-color: #2AB093;
+  }
 `;
 
 const CategoryWrapper = styled.div`
@@ -41,18 +47,6 @@ const CATEGORY_ID_TO_ICON: { [key: number]: IconType } = {
   4: FaVolleyballBall
 };
 
-const BackgroundImg = styled.div`
-  background-image: url("https://source.unsplash.com/collection/1849603/1600x900");
-  background-position: center;
-  background-size: 100%;
-  border-radius: 5px;
-
-  width: 100%;
-  height: 20rem;
-
-  margin: 2rem 0;
-`;
-
 export default React.memo(() => {
   const categories = [
     { id: 1, label: "Pub" },
@@ -64,7 +58,7 @@ export default React.memo(() => {
 
   return (
     <FrontpageContainer>
-      <BackgroundImg />
+      <ReactHeader />
       <FrontpageContainer>
         <NewFlex flexWrap="wrap">
           {categories.map(category => {
@@ -86,7 +80,7 @@ export default React.memo(() => {
         </NewFlex>
         {categoryId && (
           <div style={{ display: "block" }}>
-            You selected the category with id {categoryId}
+            {categoryId}
           </div>
         )}
         <Form selectedCategories={[categoryId]} />

@@ -37,28 +37,35 @@ const CREATE_MEETUP = gql`
 
 const Input = styled.input`
   display: block;
-  border: 1px solid grey;
-  border-radius: 4px;
+  outline: 0;
+  border-width: 0 0 2px;
+  border-color: #3f3f3f;
+  text-indent: 10px;
+  font-size: 1.5em;
   width: 50%;
-  height: 3em;
-  &:focus {
-    box-shadow: 0 0 10px grey;
-  }
+  height: 2em;
 `;
 
 const Label = styled.label`
   display: block;
-  font-size: 2rem;
+  font-size: 1.5rem;
+  margin-bottom: 1em;
 `;
 
 const Button = styled.button`
   margin-top: 0.5rem;
-  background-color: #239bcf;
-  border: 2px solid #145875;
-  height: 2rem;
+  font-size: 1rem;
+  background-color: #34ace0;
+  color: #ffff;
+  border: none;
+  padding: 1.2rem;
   border-radius: 4px;
   &:hover {
     cursor: pointer;
+    background-color: #277fa8;
+  }
+  &:active {
+    background-color: #227093;
   }
 `;
 
@@ -121,7 +128,6 @@ class Form extends React.Component<IProps, IState> {
             >
               <div style={{ marginTop: "2rem" }}>
                 <div>
-                  <Label htmlFor="username">Username</Label>
                   <Input
                     type="text"
                     name="username"
@@ -129,9 +135,9 @@ class Form extends React.Component<IProps, IState> {
                     value={this.state.username}
                     onChange={this.handleInputChange}
                   />
+                  <Label htmlFor="username">Username</Label>
                 </div>
                 <div>
-                  <Label htmlFor="currLoc">Current Location</Label>
                   <Input
                     type="text"
                     name="currLoc"
@@ -139,9 +145,9 @@ class Form extends React.Component<IProps, IState> {
                     value={this.state.currLoc}
                     onChange={this.handleInputChange}
                   />
+                  <Label htmlFor="currLoc">Current Location</Label>
                 </div>
                 <div>
-                  <Label htmlFor="currDate">Arrival Date</Label>
                   <Input
                     type="date"
                     value={this.state.currDate}
@@ -149,9 +155,9 @@ class Form extends React.Component<IProps, IState> {
                     id="currDate"
                     onChange={this.handleInputChange}
                   />
+                  <Label htmlFor="currDate">Arrival Date</Label>
                 </div>
                 <div>
-                  <Label htmlFor="arrivalTime">Arrival Time</Label>
                   <Input
                     type="time"
                     value={this.state.arrivalTime}
@@ -159,9 +165,9 @@ class Form extends React.Component<IProps, IState> {
                     id="arrivalTime"
                     onChange={this.handleInputChange}
                   />
+                  <Label htmlFor="arrivalTime">Arrival Time</Label>
                 </div>
                 <div>
-                  <Label htmlFor="travelTime">Max travel time (min)</Label>
                   <Input
                     type="text"
                     value={this.state.travelTime}
@@ -169,6 +175,7 @@ class Form extends React.Component<IProps, IState> {
                     id="travelTime"
                     onChange={this.handleInputChange}
                   />
+                  <Label htmlFor="travelTime">Max travel time (min)</Label>
                 </div>
                 <Button type="submit">View Single</Button>
               </div>

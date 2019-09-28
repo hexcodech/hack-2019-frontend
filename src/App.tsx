@@ -16,6 +16,8 @@ import Page404 from "./components/Page404";
 import Meetup from "./containers/Meetup";
 
 const API_URL: string = process.env.API_URL || "";
+import CreateGroup from "./components/CreateGroup";
+import GroupResult from "./containers/GroupResult";
 
 // const Product = universalWithLoadingBar(props =>
 //   import(/* webpackChunkName: "product" */ "./containers/Product")
@@ -38,8 +40,8 @@ const App: React.SFC<Props> = ({ history, store }) => {
           <Wrapper>
             <Switch>
               <Route exact path={`/`} component={Frontpage} />
-              <Route path={`/meetup/:id`} component={Meetup} />
               <Route path={`/meetup/:id/:token`} component={Meetup} />
+              <Route path={`/meetup/:id`} component={Meetup} />
               <Route component={Page404} />
             </Switch>
           </Wrapper>
