@@ -9,30 +9,38 @@ import { connect } from "react-redux";
 import { push } from "connected-react-router";
 import ReactHeader from "./ReactHeader";
 
-const Input = styled.input`
+const Input = styled.input `
   display: block;
-  border: 1px solid grey;
-  border-radius: 4px;
+  outline: 0;
+  border-width: 0 0 2px;
+  border-color: #3F3F3F;
+  text-indent: 10px; 
+  font-size: 1.5em;
   width: 50%;
-  height: 3em;
-  &:focus{
-    box-shadow: 0 0 10px grey;
-  }
+  height: 2em;
+
 `;
 
-const Label = styled.label`
+const Label = styled.label `
   display: block;
-  font-size: 2rem;
+  font-size: 1.5rem;
+  margin-bottom: 1em;
 `;
 
-const Button = styled.button`
+const Button = styled.button `
   margin-top: 0.5rem;
-  background-color: #239bcf;
-  border: 2px solid #145875;
-  height: 2rem;
+  font-size: 1rem;
+  background-color: #34ace0;
+  color: #ffff;
+  border: none;
+  padding: 1.2rem;
   border-radius: 4px;
   &:hover{
     cursor: pointer;
+    background-color: #277FA8;
+  }
+  &:active{
+    background-color: #227093;
   }
 `;
 
@@ -73,7 +81,6 @@ class CreateGroup extends React.Component<IProps,IState>{
       <div style={{marginTop: "2rem"}}>
       <ReactHeader />
         <div>
-          <Label htmlFor="name">Name</Label>
           <Input
             type="text"
             name="name"
@@ -81,9 +88,9 @@ class CreateGroup extends React.Component<IProps,IState>{
             value={this.state.name}
             onChange={this.handleInputChange}
           />
+          <Label htmlFor="name">Name</Label>
         </div>
         <div>
-          <Label htmlFor="groupName">Group Name</Label>
           <Input
             type="date"
             value={this.state.groupName}
@@ -91,9 +98,9 @@ class CreateGroup extends React.Component<IProps,IState>{
             id="groupName"
             onChange={this.handleInputChange}
           />
+          <Label htmlFor="groupName">Group Name</Label>
         </div>
         <div>
-          <Label htmlFor="info">Group Info</Label>
           <Input
             type="time"
             value={this.state.info}
@@ -101,6 +108,7 @@ class CreateGroup extends React.Component<IProps,IState>{
             id="info"
             onChange={this.handleInputChange}
           />
+          <Label htmlFor="info">Group Info</Label>
         </div>
         <Button type="submit" onClick={this.handleSubmit}>View Results</Button>
       </div>

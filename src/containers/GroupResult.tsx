@@ -5,30 +5,38 @@ import { gql } from "apollo-boost";
 import { getBackURI } from "../utilities/helpers";
 import ReactHeader from "../components/ReactHeader";
 
-const Input = styled.input`
+const Input = styled.input `
   display: block;
-  border: 1px solid grey;
-  border-radius: 4px;
+  outline: 0;
+  border-width: 0 0 2px;
+  border-color: #3F3F3F;
+  text-indent: 10px; 
+  font-size: 1.5em;
   width: 50%;
-  height: 3em;
-  &:focus{
-    box-shadow: 0 0 10px grey;
-  }
+  height: 2em;
+
 `;
 
-const Label = styled.label`
+const Label = styled.label `
   display: block;
-  font-size: 2rem;
+  font-size: 1.5rem;
+  margin-bottom: 1em;
 `;
 
-const Button = styled.button`
+const Button = styled.button `
   margin-top: 0.5rem;
-  background-color: #239bcf;
-  border: 2px solid #145875;
-  height: 2rem;
+  font-size: 1rem;
+  background-color: #34ace0;
+  color: #ffff;
+  border: none;
+  padding: 1.2rem;
   border-radius: 4px;
   &:hover{
     cursor: pointer;
+    background-color: #277FA8;
+  }
+  &:active{
+    background-color: #227093;
   }
 `;
 
