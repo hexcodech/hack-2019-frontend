@@ -14,13 +14,13 @@ const COLORS: { [key: number]: String } = {
   5: "#0F6CA6"
 };
 
-const Container = styled.div`
+const FrontpageContainer = styled.div`
   height: 100%;
 `;
 
 const Category = styled.div<{ active: boolean }>`
   position: relative;
-  padding-top:100%;
+  padding-top: 100%;
   color: #ffff;
   background-color: ${({ active }) => (active ? "#f00" : "#1f5373")};
 `;
@@ -33,12 +33,13 @@ const CategoryWrapper = styled.div`
   text-align: center;
   border-radius: 20px;
   cursor: pointer;
-  
+
   transform: translateY(-50%);
 `;
 
 const NewFlex = styled(Flex)`
   flex-grow: 1;
+  margin: 0 -0.5rem !important;
 `;
 
 const CATEGORY_ID_TO_ICON: { [key: number]: IconType } = {
@@ -47,6 +48,17 @@ const CATEGORY_ID_TO_ICON: { [key: number]: IconType } = {
   3: FaMusic,
   4: FaVolleyballBall
 };
+
+const BackgroundImg = styled.div`
+  background-image: url("https://source.unsplash.com/collection/1849603/1600x900");
+  background-position: center;
+  background-size: 100%;
+
+  width: 100%;
+  height: 5rem;
+
+  margin: 2rem 0;
+`;
 
 export default React.memo(() => {
   const categories = [
@@ -58,26 +70,21 @@ export default React.memo(() => {
   const [categoryId, setCategoryId] = React.useState(null);
 
   return (
-    <Container>
+    <FrontpageContainer>
+      <BackgroundImg />
+      <FrontpageContainer>
         <NewFlex flexWrap="wrap">
           {categories.map(category => {
             const Icon = CATEGORY_ID_TO_ICON[category.id] || FaBeer;
 
             return (
-              <Box
-                width={[1, 1 / 2, 1 / 3, 1 / 4]}
-                pr={2}
-                key={category.id}
-              >
+              <Box width={[1, 1 / 2, 1 / 3, 1 / 4]} px={2} key={category.id}>
                 <Category
                   active={categoryId === category.id}
                   onClick={() => setCategoryId(category.id)}
                 >
                   <CategoryWrapper>
-                  <Icon
-                    size={120}
-                    style={{maxHeight: "80%"}}
-                  />
+                    <Icon size={120} style={{ maxHeight: "80%" }} />
                   </CategoryWrapper>
                 </Category>
               </Box>
@@ -85,10 +92,11 @@ export default React.memo(() => {
           })}
         </NewFlex>
         {categoryId && (
-          <div
-            style={{display: "block"}}
-          >You selected the category with id {categoryId}</div>
+          <div style={{ display: "block" }}>
+            You selected the category with id {categoryId}
+          </div>
         )}
-    </Container>
+      </FrontpageContainer>
+    </FrontpageContainer>
   );
 });
