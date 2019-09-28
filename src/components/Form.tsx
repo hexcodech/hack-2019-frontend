@@ -114,7 +114,7 @@ class Form extends React.Component<IProps, IState> {
                           this.state.arrivalTime +
                           "+02:00"
                       ).getTime() / 1000,
-                    username: "",
+                    username: this.state.username,
                     location: this.state.currLoc
                   }
                 }).then((result: any) => {
