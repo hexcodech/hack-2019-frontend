@@ -1,18 +1,9 @@
 import * as React from "react";
 import { FaBeer, FaVolleyballBall, FaFilm, FaMusic } from "react-icons/fa";
-
-import Header1 from "../components/Header1";
 import styled from "styled-components";
 import { Flex, Box } from "reflexbox";
 import { IconType } from "react-icons/lib/cjs";
-
-const COLORS: { [key: number]: String } = {
-  1: "#F24405",
-  2: "#F27405",
-  3: "#F28705",
-  4: "#8EBABF",
-  5: "#0F6CA6"
-};
+import Form from "../components/Form";
 
 const FrontpageContainer = styled.div`
   height: 100%;
@@ -23,6 +14,7 @@ const Category = styled.div<{ active: boolean }>`
   padding-top: 100%;
   color: #ffff;
   background-color: ${({ active }) => (active ? "#f00" : "#1f5373")};
+  border-radius: 20px;
 `;
 
 const CategoryWrapper = styled.div`
@@ -53,9 +45,10 @@ const BackgroundImg = styled.div`
   background-image: url("https://source.unsplash.com/collection/1849603/1600x900");
   background-position: center;
   background-size: 100%;
+  border-radius: 5px;
 
   width: 100%;
-  height: 5rem;
+  height: 20rem;
 
   margin: 2rem 0;
 `;
@@ -96,6 +89,7 @@ export default React.memo(() => {
             You selected the category with id {categoryId}
           </div>
         )}
+        <Form />
       </FrontpageContainer>
     </FrontpageContainer>
   );
