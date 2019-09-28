@@ -6,6 +6,7 @@ import Form from "../components/Form";
 import Container from "../components/Container";
 import { Query } from "@apollo/react-components";
 import gql from "graphql-tag";
+import ReactHeader from "../components/ReactHeader";
 
 const GET_MEETUP = gql`
   query meetup($id: ID!) {
@@ -54,7 +55,7 @@ const Meetup: React.SFC<Props> = React.memo(
   }) => {
     return (
       <MeetupContainer>
-        <BackgroundImg />
+        <ReactHeader />
         <Container>
           <Query
             query={GET_MEETUP}
