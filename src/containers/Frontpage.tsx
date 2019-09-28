@@ -16,25 +16,29 @@ const COLORS: { [key: number]: String } = {
 
 const Container = styled.div`
   height: 100%;
-  display: flex;
-  align-items: center;
 `;
 
 const Category = styled.div<{ active: boolean }>`
+  position: relative;
+  padding-top:100%;
   color: #ffff;
   background-color: ${({ active }) => (active ? "#f00" : "#1f5373")};
+`;
+
+const CategoryWrapper = styled.div`
+  position: absolute;
+  top: 50%;
+  left: 0;
+  right: 0;
   text-align: center;
   border-radius: 20px;
   cursor: pointer;
-  height: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  
+  transform: translateY(-50%);
 `;
 
 const NewFlex = styled(Flex)`
   flex-grow: 1;
-  height: 40%;
 `;
 
 const CATEGORY_ID_TO_ICON: { [key: number]: IconType } = {
@@ -55,7 +59,6 @@ export default React.memo(() => {
 
   return (
     <Container>
-      <header></header>
         <NewFlex flexWrap="wrap">
           {categories.map(category => {
             const Icon = CATEGORY_ID_TO_ICON[category.id] || FaBeer;
@@ -70,10 +73,12 @@ export default React.memo(() => {
                   active={categoryId === category.id}
                   onClick={() => setCategoryId(category.id)}
                 >
+                  <CategoryWrapper>
                   <Icon
                     size={120}
                     style={{maxHeight: "80%"}}
                   />
+                  </CategoryWrapper>
                 </Category>
               </Box>
             );
