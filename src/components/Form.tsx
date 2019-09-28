@@ -23,7 +23,7 @@ const Input = styled.input `
 const Label = styled.label `
   display: block;
   font-size: 1.5rem;
-  padding-top: 1.8em;
+  margin-bottom: 1em;
 `;
 
 const Button = styled.button `
@@ -88,7 +88,7 @@ class Form extends React.Component<IProps, IState> {
         {marginTop: "2rem"}
       }>
         <div>
-          <Label htmlFor="curLoc">Current Location</Label>
+          
           <Input type="text" name="curLoc" id="curLoc"
             value={
               this.state.curLoc
@@ -96,9 +96,10 @@ class Form extends React.Component<IProps, IState> {
             onChange={
               this.handleInputChange
             }/>
+            <Label htmlFor="curLoc">Current Location</Label>
         </div>
           <div>
-            <Label htmlFor="curDate">Arrival Date</Label>
+            
             <Input type="date"
               value={
                 this.state.curDate
@@ -108,9 +109,10 @@ class Form extends React.Component<IProps, IState> {
               onChange={
                 this.handleInputChange
               }/>
+              <Label htmlFor="curDate">Arrival Date</Label>
           </div>
           <div>
-            <Label htmlFor="arrivalTime">Arrival Time</Label>
+            
             <Input type="time"
               value={
                 this.state.arrivalTime
@@ -120,9 +122,10 @@ class Form extends React.Component<IProps, IState> {
               onChange={
                 this.handleInputChange
               }/>
+              <Label htmlFor="arrivalTime">Arrival Time</Label>
           </div>
           <div>
-            <Label htmlFor="travelTime">Max travel time (min)</Label>
+            
             <Input type="text"
               value={
                 this.state.travelTime
@@ -132,6 +135,7 @@ class Form extends React.Component<IProps, IState> {
               onChange={
                 this.handleInputChange
               }/>
+              <Label htmlFor="travelTime">Max travel time (min)</Label>
           </div>
           <Button
             type="submit"
