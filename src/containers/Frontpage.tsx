@@ -4,6 +4,7 @@ import styled from "styled-components";
 import { Flex, Box } from "reflexbox";
 import { IconType } from "react-icons/lib/cjs";
 import Form from "../components/Form";
+import ReactHeader from "../components/ReactHeader";
 
 const FrontpageContainer = styled.div`
   height: 100%;
@@ -46,18 +47,6 @@ const CATEGORY_ID_TO_ICON: { [key: number]: IconType } = {
   4: FaVolleyballBall
 };
 
-const BackgroundImg = styled.div`
-  background-image: url("https://source.unsplash.com/collection/1849603/1600x900");
-  background-position: center;
-  background-size: 100%;
-  border-radius: 5px;
-
-  width: 100%;
-  height: 20rem;
-
-  margin: 2rem 0;
-`;
-
 export default React.memo(() => {
   const categories = [
     { id: 1, label: "Pub" },
@@ -69,7 +58,7 @@ export default React.memo(() => {
 
   return (
     <FrontpageContainer>
-      <BackgroundImg />
+      <ReactHeader />
       <FrontpageContainer>
         <NewFlex flexWrap="wrap">
           {categories.map(category => {
