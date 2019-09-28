@@ -11,6 +11,8 @@ import { History } from "history";
 import Wrapper from "./components/Wrapper";
 import Frontpage from "./containers/Frontpage";
 import Page404 from "./components/Page404";
+import CreateGroup from "./components/CreateGroup";
+import GroupResult from "./containers/GroupResult";
 
 // const Product = universalWithLoadingBar(props =>
 //   import(/* webpackChunkName: "product" */ "./containers/Product")
@@ -28,6 +30,8 @@ const App: React.SFC<Props> = ({ history, store }) => {
         <Wrapper>
           <Switch>
             <Route exact path={`/`} component={Frontpage} />
+            <Route exact path={"/groupInfo"} component={CreateGroup} />
+            <Route exact path={"/groupInfo/:hash"} component={GroupResult} />
             <Route component={Page404} />
           </Switch>
         </Wrapper>
