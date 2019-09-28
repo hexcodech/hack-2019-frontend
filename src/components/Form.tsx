@@ -39,7 +39,9 @@ interface IState{
   travelTime?:string;
   arrivalTime?:string
 }
-interface IProps{}
+interface IProps{
+  selected:string;
+}
 class Form extends React.Component<IProps,IState>{
   constructor(props:any){
     super(props);
@@ -58,18 +60,10 @@ class Form extends React.Component<IProps,IState>{
   }
 
   handleSubmit(event:any){
-    let travelMinutes = +this.state.travelTime;
+    // travel time in seconds
+    let travelMinutes = +this.state.travelTime * 60;
     let arrivalDate = new Date(this.state.curDate + " " + this.state.arrivalTime)
-    
-    //travel time in minutes
-/*
-    client.query({
-      query: gql`
-        {
-
-        }
-      `
-    })*/
+  
     event.preventDefault();
   }
 
@@ -117,6 +111,7 @@ class Form extends React.Component<IProps,IState>{
             />
         </div>
         <Button type="submit" onClick={this.handleSubmit}>View Single</Button>
+        <Button type="submit" style={{marginLeft: "1rem"}} onClick={this.handleSubmit}>View Single</Button>
       </div>
     )
   }
