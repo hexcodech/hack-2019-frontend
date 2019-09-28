@@ -7,6 +7,7 @@ import { ThunkDispatch } from "redux-thunk";
 import { AnyAction } from "redux";
 import { connect } from "react-redux";
 import { push } from "connected-react-router";
+import ReactHeader from "./ReactHeader";
 
 const Input = styled.input`
   display: block;
@@ -70,6 +71,7 @@ class CreateGroup extends React.Component<IProps,IState>{
   render(){
     return(
       <div style={{marginTop: "2rem"}}>
+      <ReactHeader />
         <div>
           <Label htmlFor="name">Name</Label>
           <Input

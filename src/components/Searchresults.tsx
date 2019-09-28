@@ -1,9 +1,9 @@
 import * as React from "react";
-
 import Header1 from "./Header1";
 import styled from "styled-components";
 import { Flex, Box } from "reflexbox";
 import { IconType } from "react-icons/lib/cjs";
+import ReactHeader from "./ReactHeader";
 
 const COLORS: { [key: number]: String } = {
   1: "#F24405",
