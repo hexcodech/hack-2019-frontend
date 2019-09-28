@@ -76,14 +76,14 @@ const Meetup: React.SFC<Props> = React.memo(
                   <h1>{meetup.title}</h1>
                   Users:
                   <ul>
-                    {meetup.users.map(user => (
-                      <li>{user.name}</li>
+                    {meetup.users.map((user: any, index: number) => (
+                      <li key={index}>{user.name}</li>
                     ))}
                   </ul>
                   Event recommendations:
                   <div>
-                    {meetup.events.map(event => (
-                      <div>
+                    {meetup.events.map((event: any, index: number) => (
+                      <div key={index}>
                         <h2>{event.title}</h2>
                         <div>Rating: {event.rating}</div>
                         <div>PriceLevel: {event.priceLevel}</div>
