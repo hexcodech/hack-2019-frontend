@@ -169,11 +169,10 @@ class Form extends React.Component<IProps, IState> {
                     />
                     <Label htmlFor="travelTime">Max travel time (min)</Label>
                   </div>
-                  <Button type="submit">View Single</Button>
+                  <Button marginTop marginBottom type="submit">
+                    Find Events
+                  </Button>
                 </div>
-                <Button marginTop marginBottom type="submit">
-                  Find Events
-                </Button>
               </div>
             </form>
           );
