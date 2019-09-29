@@ -7,6 +7,8 @@ import { connect } from "react-redux";
 import { ThunkDispatch } from "redux-thunk";
 import { AnyAction } from "redux";
 import { push } from "connected-react-router";
+import { marginLeft, width } from "styled-system";
+import { FaSubway, FaCar } from 'react-icons/fa';
 
 const CREATE_MEETUP = gql`
   mutation CreateMeetup(
@@ -42,7 +44,7 @@ const Input = styled.input`
   border-color: #3f3f3f;
   text-indent: 10px;
   font-size: 1.5em;
-  width: 50%;
+  width: 100%;
   height: 2em;
 `;
 
@@ -110,9 +112,9 @@ class Form extends React.Component<IProps, IState> {
                     datetime:
                       new Date(
                         this.state.currDate +
-                          "T" +
-                          this.state.arrivalTime +
-                          "+02:00"
+                        "T" +
+                        this.state.arrivalTime +
+                        "+02:00"
                       ).getTime() / 1000,
                     username: this.state.username,
                     location: this.state.currLoc
@@ -127,58 +129,79 @@ class Form extends React.Component<IProps, IState> {
               }}
             >
               <div style={{ marginTop: "2rem" }}>
-                <div>
-                  <Input
-                    type="text"
-                    name="username"
-                    id="username"
-                    value={this.state.username}
-                    onChange={this.handleInputChange}
-                  />
-                  <Label htmlFor="username">Username</Label>
+                <div style={
+                  {
+                    width: "50%",
+                    float: "left"
+                  }
+                }>
+                  <div>
+                    <Input
+                      type="text"
+                      name="username"
+                      id="username"
+                      value={this.state.username}
+                      onChange={this.handleInputChange}
+                    />
+                    <Label htmlFor="username">Username</Label>
+                  </div>
+                  <div>
+                    <Input
+                      type="text"
+                      name="currLoc"
+                      id="currLoc"
+                      value={this.state.currLoc}
+                      onChange={this.handleInputChange}
+                    />
+                    <Label htmlFor="currLoc">Current Location</Label>
+                  </div>
+                  <div>
+                    <Input
+                      type="date"
+                      value={this.state.currDate}
+                      name="currDate"
+                      id="currDate"
+                      onChange={this.handleInputChange}
+                    />
+                    <Label htmlFor="currDate">Arrival Date</Label>
+                  </div>
+                  <div>
+                    <Input
+                      type="time"
+                      value={this.state.arrivalTime}
+                      name="arrivalTime"
+                      id="arrivalTime"
+                      onChange={this.handleInputChange}
+                    />
+                    <Label htmlFor="arrivalTime">Arrival Time</Label>
+                  </div>
+                  <div>
+                    <Input
+                      type="text"
+                      value={this.state.travelTime}
+                      name="travelTime"
+                      id="travelTime"
+                      onChange={this.handleInputChange}
+                    />
+                    <Label htmlFor="travelTime">Max travel time (min)</Label>
+                  </div>
+                  <Button type="submit">View Single</Button>
                 </div>
-                <div>
-                  <Input
-                    type="text"
-                    name="currLoc"
-                    id="currLoc"
-                    value={this.state.currLoc}
-                    onChange={this.handleInputChange}
-                  />
-                  <Label htmlFor="currLoc">Current Location</Label>
+                <div style={
+                  {
+                    marginLeft: "50%",
+                    width: "50%"
+                  }
+                }>
+                  <div>
+                    <FaSubway size={120} style={{ maxHeight: "80%" }} />
+                  </div>
+                  <div>
+                    <FaCar size={120} style={{ maxHeight: "80%" }} />
+                  </div>
                 </div>
-                <div>
-                  <Input
-                    type="date"
-                    value={this.state.currDate}
-                    name="currDate"
-                    id="currDate"
-                    onChange={this.handleInputChange}
-                  />
-                  <Label htmlFor="currDate">Arrival Date</Label>
-                </div>
-                <div>
-                  <Input
-                    type="time"
-                    value={this.state.arrivalTime}
-                    name="arrivalTime"
-                    id="arrivalTime"
-                    onChange={this.handleInputChange}
-                  />
-                  <Label htmlFor="arrivalTime">Arrival Time</Label>
-                </div>
-                <div>
-                  <Input
-                    type="text"
-                    value={this.state.travelTime}
-                    name="travelTime"
-                    id="travelTime"
-                    onChange={this.handleInputChange}
-                  />
-                  <Label htmlFor="travelTime">Max travel time (min)</Label>
-                </div>
-                <Button type="submit">View Single</Button>
               </div>
+
             </form>
           );
         }}
