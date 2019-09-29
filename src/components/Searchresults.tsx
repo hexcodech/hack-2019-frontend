@@ -30,7 +30,7 @@ const NewFlex = styled(Flex)`
 `;
 
 const BackgroundImg = styled.div`
-  background-image: url("https://source.unsplash.com/collection/1849603/1600x900");
+  background-image: url("https://source.unsplash.com/1600x900/?bar,restaurant,cinema");
   background-position: center;
   background-size: 100%;
 

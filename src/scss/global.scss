@@ -1,6 +1,7 @@
 @import "fonts";
 
-html, body{
+html,
+body {
   margin: 0;
   padding: 0;
 }
@@ -9,12 +10,16 @@ body {
   background: #ffff;
   font-family: "Roboto", sans-serif;
   font-weight: 300;
+  font-size: 16px;
 }
 
-html, body, #root, main{
+html,
+body,
+#root,
+main {
   height: 100%;
 }
 
-*{
+* {
   box-sizing: border-box;
 }

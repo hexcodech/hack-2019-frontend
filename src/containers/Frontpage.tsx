@@ -17,9 +17,9 @@ const Category = styled.div<{ active: boolean }>`
   background-color: ${({ active }) => (active ? "#218c74" : "#33d9b2")};
   border-radius: 20px;
 
-  &:hover{
+  &:hover {
     cursor: pointer;
-    background-color: #2AB093;
+    background-color: #2ab093;
   }
 `;
 
@@ -54,7 +54,7 @@ export default React.memo(() => {
     { id: 3, label: "Concert" },
     { id: 4, label: "Sport" }
   ];
-  const [categoryId, setCategoryId] = React.useState(null);
+  const [categoryId, setCategoryId] = React.useState(1);
 
   return (
     <FrontpageContainer>
@@ -78,11 +78,6 @@ export default React.memo(() => {
             );
           })}
         </NewFlex>
-        {categoryId && (
-          <div style={{ display: "block" }}>
-            {categoryId}
-          </div>
-        )}
         <Form selectedCategories={[categoryId]} />
       </FrontpageContainer>
     </FrontpageContainer>

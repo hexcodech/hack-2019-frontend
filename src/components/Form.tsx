@@ -7,6 +7,7 @@ import { connect } from "react-redux";
 import { ThunkDispatch } from "redux-thunk";
 import { AnyAction } from "redux";
 import { push } from "connected-react-router";
+import Button from "./Button";
 
 const CREATE_MEETUP = gql`
   mutation CreateMeetup(
@@ -50,23 +51,6 @@ const Label = styled.label`
   display: block;
   font-size: 1.5rem;
   margin-bottom: 1em;
-`;
-
-const Button = styled.button`
-  margin-top: 0.5rem;
-  font-size: 1rem;
-  background-color: #34ace0;
-  color: #ffff;
-  border: none;
-  padding: 1.2rem;
-  border-radius: 4px;
-  &:hover {
-    cursor: pointer;
-    background-color: #277fa8;
-  }
-  &:active {
-    background-color: #227093;
-  }
 `;
 
 interface IState {
@@ -177,7 +161,9 @@ class Form extends React.Component<IProps, IState> {
                   />
                   <Label htmlFor="travelTime">Max travel time (min)</Label>
                 </div>
-                <Button type="submit">View Single</Button>
+                <Button marginTop marginBottom type="submit">
+                  Find Events
+                </Button>
               </div>
             </form>
           );
